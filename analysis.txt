@@ -1,0 +1,38 @@
+# Student provides a text file accurately explaining their run time analysis (Worst-Case Big-O Notation) for each solution they produced.
+
+## Consideration: For big O analysis I'm considering n as the number of text and calls
+
+## Task 0
+
+In order to get the last value implies we need to iterate through the whole list
+Complexity O(n)
+
+## Task 1
+
+In order to get all the phones we need to iterate both lists and get the phone number 
+Complexity O(n)
+
+## Task 2
+
+In order to get the longest time we need to iterate throught both lists to create a dictionary with the accumulated for each number(complexity O(n)) then we need to iterate through that list to get the maxium value(complexity O(n))
+Complexity O(n)
+
+## Task 3
+
+Part A:
+
+In order to get the numbers called by people from people in Bangalore we need to iterate trough the list of calls and accumulate them in a list
+Complexity O(n)
+
+Part B:
+From above we get a list of phones made to other fixed Bangalore numbers and a list of calls made from Bangalore to non fixed Bangalore numbers
+Complexity O(n)
+
+
+## Task 4
+In order to get the possible telemarketer numbers we need to generate two sorted lists for all caller numbers and all valid numbers(complexity O(nlog(n)) and we need to iterate the first over the second to exclude the numbers which belongs to the second list (complexity O(n^2))
+Complexity O(n^2)
+
+
+
+
