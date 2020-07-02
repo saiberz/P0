@@ -19,68 +19,36 @@ telephone marketing. Create a set of possible telemarketers:
 these are numbers that make outgoing calls but never send texts,
 receive texts or receive incoming calls.
 
-Print a message:
+print a message:
 "These numbers could be telemarketers: "
 <list of numbers>
 The list of numbers should be print out one per line in lexicographic order with no duplicates.
 """
 
-# Telemarketers' numbers have no parentheses or space, but start with the code 140. Example: "1402316533".
 
-
-# O(1)
-def is_marketing_number(phone_number):
-    if(phone_number[0:3] == "140"):
-        return True
-    else:
-        return False
+# O(n)
+def get_caller_numbers(call_records):
+    caller_numbers = set()
+    for call_record in call_records:
+        caller_numbers.add(call_record[0])
+    return caller_numbers
 
 
 # O(n)
-def get_marketing_format_numbers(phone_numbers):
-    marketing_numbers = []
-    for phone_number in phone_numbers:
-        if is_marketing_number(phone_number):
-            marketing_numbers.append(phone_number)
-    return marketing_numbers
-
-
-# O(nlog(n))
-def get_caller_numbers(call_records):
-    caller_numbers = []
-    for call_record in call_records:
-        if(call_record[0] not in caller_numbers):
-            caller_numbers.append(call_record[0])
-    return sorted(caller_numbers)
-
-
-# O(nlog(n))
 def get_receiver_numbers(call_records):
-    receiver_numbers = []
+    receiver_numbers = set()
     for call_record in call_records:
-        if(call_record[1] not in receiver_numbers):
-            receiver_numbers.append(call_record[1])
-    return sorted(receiver_numbers)
+        receiver_numbers.add(call_record[1])
+    return receiver_numbers
 
 
-# O(nlog(n))
+# O(n)
 def get_text_numbers(text_records):
-    text_numbers = []
+    text_numbers = set()
     for text_record in text_records:
-        if(text_record[0] not in text_numbers):
-            text_numbers.append(text_record[0])
-        if(text_record[1] not in text_numbers):
-            text_numbers.append(text_record[1])
-    return sorted(text_numbers)
-
-
-# O(n^2)
-def get_marketing_activity_numbers(phone_numbers, valid_numbers):
-    marketing_numbers = []
-    for phone_number in phone_numbers:
-        if(phone_number not in valid_numbers):
-            marketing_numbers.append(phone_number)
-    return marketing_numbers
+        text_numbers.add(text_record[0])
+        text_numbers.add(text_record[1])
+    return text_numbers
 
 
 def print_list(custom_list):
@@ -88,13 +56,21 @@ def print_list(custom_list):
         print(x)
 
 
+# Set of numbers that:
+# - at least have received a call
+# - sent or received a text
 numbers_with_valid_activity = \
-    get_receiver_numbers(calls) + get_text_numbers(texts)
+    get_receiver_numbers(calls) | get_text_numbers(texts)
+
+# Set of numbers that have made at least one call
 caller_numbers = get_caller_numbers(calls)
-marketing_activity_numbers = \
-    get_marketing_activity_numbers(caller_numbers, numbers_with_valid_activity)
-telemarketing_numbers = \
-    get_marketing_format_numbers(marketing_activity_numbers)
+
+# All the numbers that have made at least might be a marketing number
+# but we need to remove the numbers that have valid activit
+# caller_numbers - numbers_with_valid_activity
+
+# O(n^2)
+telemarketing_numbers = caller_numbers - numbers_with_valid_activity
 
 print(f"These numbers could be telemarketers:")
 print_list(telemarketing_numbers)

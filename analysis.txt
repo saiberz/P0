@@ -21,18 +21,14 @@ Complexity O(n)
 
 Part A:
 
-In order to get the numbers called by people from people in Bangalore we need to iterate trough the list of calls and accumulate them in a list
-Complexity O(n)
+In order to get the numbers called by people from people in Bangalore we need to iterate trough the list of calls and accumulate them in a list, as this results are not sortered we need to sort it using built in sort function which has O(nlogn) complexity which is worse than O(n) from loop 
+Complexity O(nlogn)
 
 Part B:
-From above we get a list of phones made to other fixed Bangalore numbers and a list of calls made from Bangalore to non fixed Bangalore numbers
-Complexity O(n)
+From above we get a list of phones made to other fixed Bangalore numbers and a list of calls made from Bangalore to non fixed Bangalore numbers, on this step we are joining two lists(complexity O(n)) so complexity for this part is given from sorting in previous step which is worse than O(n)
+Complexity O(nlogn)
 
 
 ## Task 4
-In order to get the possible telemarketer numbers we need to generate two sorted lists for all caller numbers and all valid numbers(complexity O(nlog(n)) and we need to iterate the first over the second to exclude the numbers which belongs to the second list (complexity O(n^2))
+In order to get the possible telemarketer numbers we need to generate sets, one with all possible telemarketing numbers(which could be any number that has made at least one call) and the other with all numbers that meet the condition of not being a telemarketing number(whic at least have received a call or have received/sent a text), when we have both sets we only need to make a difference of both sets and we have the results. Complexity is given for worse case which would be the difference of sets that in worst case scenario is O(n^2) 
 Complexity O(n^2)
-
-
-
-
