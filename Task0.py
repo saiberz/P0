@@ -20,22 +20,13 @@ Print messages:
 "Last record of calls, <incoming number> calls <answering number> at time <time>, lasting <during> seconds"
 """
 
+first_text = texts[0]
+first_message = f"First record of texts, {first_text[0]} \
+texts {first_text[1]} at time {first_text[2]}"
 
-def dict_record(tuple_record):
-    return {
-        'incoming_number': tuple_record[0],
-        'answering_number': tuple_record[1],
-        'time': tuple_record[2]
-    }
-
-
-first_text_record = dict_record(texts[0])
-first_message = f"First record of texts, {first_text_record['incoming_number']} \
-texts {first_text_record['answering_number']} at time {first_text_record['time']}"
-
-last_call_record = dict_record(calls[-1])
-second_message = f"Last record of calls, {last_call_record['incoming_number']} \
-calls {last_call_record['answering_number']} at time {last_call_record['time']}"
+last_call = calls[-1]
+second_message = f"Last record of calls, {last_call[0]} \
+calls {last_call[1]} at time {last_call[2]}, lasting {last_call[3]} seconds"
 
 print(first_message)
 print(second_message)
