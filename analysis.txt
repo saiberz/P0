@@ -4,8 +4,8 @@
 
 ## Task 0
 
-In order to get the last value implies we need to iterate through the whole list
-Complexity O(n)
+In order to get the value knowing the index the has a constant value
+Complexity O(1)
 
 ## Task 1
 
