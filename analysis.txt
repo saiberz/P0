@@ -30,5 +30,6 @@ Complexity O(nlogn)
 
 
 ## Task 4
-In order to get the possible telemarketer numbers we need to generate sets, one with all possible telemarketing numbers(which could be any number that has made at least one call) and the other with all numbers that meet the condition of not being a telemarketing number(whic at least have received a call or have received/sent a text), when we have both sets we only need to make a difference of both sets and we have the results. Complexity is given for worse case which would be the difference of sets that in worst case scenario is O(n^2) 
-Complexity O(n^2)
+In order to get the possible telemarketer numbers we need to generate sets, one with all possible telemarketing numbers(which could be any number that has made at least one call) and the other with all numbers that meet the condition of not being a telemarketing number(whic at least have received a call or have received/sent a text), when we have both sets we only need to make a difference of both sets and we have the results.
+For average case complexity of difference of sets is O(len(caller_numbers)) and compared with sorted(O(nlogn)) then complexity for this problem would be O(nlogn)
+For worst case complexity of difference of sets(what I could find investigating) is O(n^2) and compared with sorted function O(nlogn) we can conclude complexity for this problem would be O(n^2)

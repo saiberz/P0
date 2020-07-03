@@ -69,10 +69,11 @@ caller_numbers = get_caller_numbers(calls)
 # but we need to remove the numbers that have valid activit
 # caller_numbers - numbers_with_valid_activity
 
-# O(n^2)
+# O(n)
 telemarketing_numbers = caller_numbers - numbers_with_valid_activity
 
 print(f"These numbers could be telemarketers:")
-print_list(telemarketing_numbers)
+# O(nlogn)
+print_list(sorted(telemarketing_numbers))
 
-# Complexity O(n^2)
+# Complexity O(nlogn)
